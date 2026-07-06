@@ -1,42 +1,11 @@
-// Función para lanzar confeti
-function lanzarConfeti() {
-  const duration = 2 * 1000; // 2 segundos
-  const end = Date.now() + duration;
+// Mostrar beneficios después de registro exitoso
+document.getElementById('formRegistro').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const nombre = document.getElementById('nombre').value;
+  const correo = document.getElementById('correo').value;
 
-  (function frame() {
-    confetti({
-      particleCount: 5,
-      angle: 60,
-      spread: 55,
-      origin: { x: 0 }
-    });
-    confetti({
-      particleCount: 5,
-      angle: 120,
-      spread: 55,
-      origin: { x: 1 }
-    });
+  document.getElementById('confirmacion').textContent =
+    `🎉 Gracias ${nombre}, tu Pase Azul ha sido registrado. Te enviaremos info a ${correo}.`;
 
-    if (Date.now() < end) {
-      requestAnimationFrame(frame);
-    }
-  })();
-}
-
-document.getElementById('comenzar').addEventListener('click', () => {
-  document.querySelector('.landing').classList.add('hidden');
-  document.querySelector('.validacion').classList.remove('hidden');
-});
-
-document.getElementById('validar').addEventListener('click', () => {
-  const codigo = document.getElementById('codigo').value.trim().toUpperCase();
-  const mensaje = document.getElementById('mensaje');
-  if (codigo.startsWith('AZ-')) {
-    mensaje.textContent = '✅ Tu Pase Azul ha sido verificado.';
-    mensaje.style.color = '#00ffcc';
-    lanzarConfeti(); // 🎉 Aquí lanzamos el confeti
-  } else {
-    mensaje.textContent = '❌ Código inválido.';
-    mensaje.style.color = '#ff4444';
-  }
+  document.querySelector('.beneficios').classList.remove('hidden'); // 👈 muestra beneficios
 });
