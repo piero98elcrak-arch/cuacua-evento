@@ -1,0 +1,31 @@
+body.azul {
+  background: linear-gradient(135deg, #0044cc, #00aaff);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  transition: all 0.5s ease;
+}
+
+.logo {
+  width: 120px;
+  margin-top: 40px;
+}
+
+button {
+  background: white;
+  color: #0044cc;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.hidden {
+  display: none;
+}
